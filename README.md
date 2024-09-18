@@ -1,4 +1,4 @@
-# === BERACHAIN 1.3 ===
+# === BERACHAIN 1.2 ===
 
 ### Функционал бота:  
 - Получение токенов через [кран](https://bartio.faucet.berachain.com/)  
