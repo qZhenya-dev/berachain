@@ -1,11 +1,10 @@
 from art import text2art
-from colorama import Fore, init
 from rich.console import Console
 
-init()
 def first_message():
     console = Console()
-    print(Fore.CYAN, text2art("NEXT SOFTS\nBERACHAIN", font="doom"))
-    console.print("Телеграм с обновлениями и другими софтами:", style="rgb(60,79,201)", end=" ")
-    console.print("https://t.me/next_softs\n", style="rgb(104,222,75)")
+    console.print(text2art("NEXT SOFTS\nBERACHAIN", font="tarty1"), style="rgb(235,160,63)")
+    print()
+    console.print("Телеграм с обновлениями и другими софтами:", style="rgb(86,171,227)", end=" ")
+    console.print("https://t.me/next_softs\n", style="rgb(86,171,227)")
     print("-"*50+"\n")

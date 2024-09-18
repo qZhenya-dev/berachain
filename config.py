@@ -1,6 +1,6 @@
 
 # токен для разгадывания капчи https://www.capsolver.com/
-capsolver_token = "CAP-2D19EA59C9EDA0AFAB7174B0F9AD1071"
+capsolver_token = ""
 
 # использовать прокси True/False
 useProxies = True
