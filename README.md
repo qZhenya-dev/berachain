@@ -6,6 +6,7 @@
 - Добавление в [пулл](https://bartio.bex.berachain.com/add-liquidity/0xd28d852cbcc68dcec922f6d5c7a8185dbaa104b7)  
 - [Стейкинг](https://bartio.station.berachain.com/gauge) HONEY-WBERA  
 - Клейм [BGT](https://bartio.station.berachain.com/gauge)
+- Просмотр баланса BGT
 
 ### Параметры:  
 - Случайные задержки между действиями  
