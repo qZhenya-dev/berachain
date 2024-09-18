@@ -26,7 +26,7 @@ class Faucet:
         logger.info(f"{self.acc_name} решаем капчу {self.taskId}..")
 
     def task_status(self):
-        while True:
+        for i in range(15):
             try:
                 time.sleep(5)
 
@@ -38,9 +38,11 @@ class Faucet:
                 if resp["status"] == "ready":
                     logger.info(f"{self.acc_name} капча решена")
                     self.captcha = resp["solution"]["token"]
-                    break
+                    return True
             except Exception as e:
                 logger.error(f"{self.acc_name} {self.taskId} {e}")
+
+        return False
 
     def get_token(self):
         self.session.headers["Authorization"] = f"Bearer {self.captcha}"
@@ -59,6 +61,9 @@ class Faucet:
         return False
 
     def faucet(self):
-        self.create_task()
-        self.task_status()
+        while True:
+            self.create_task()
+            if self.task_status():
+                break
+
         return self.get_token()

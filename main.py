@@ -19,10 +19,10 @@ def start_farming(accounts):
     timeouts = {}
 
     while True:
-        try:
-            time.sleep(10)
-            random.shuffle(clients)
-            for i, client in enumerate(clients):
+        time.sleep(10)
+        random.shuffle(clients)
+        for i, client in enumerate(clients):
+            try:
                 acc_name = client.acc_name
 
                 if acc_name not in timeouts:
@@ -31,15 +31,21 @@ def start_farming(accounts):
                 if time.time() >= timeouts[acc_name]:
                     logger.info(f"{acc_name} запуск..")
                     threading.Thread(target=client.start).start()
-                    timeouts[acc_name] = int(time.time() + random.randint(*delay_staking) * (i+1))
+                    timeouts[acc_name] = int(time.time() + random.randint(*delay_staking))
 
-        except Exception as e:
-            logger.error(e)
+            except Exception as e:
+                logger.error(e)
 
 def check_balances_bgt(accounts):
     def check_balance(account):
-        bera = BeraStake(account)
-        logger.info(f"{bera.acc_name} - {round(bera.token_balance(coins.BGT.address), 6)} {coins.BGT.coin}")
+        while True:
+            try:
+                bera = BeraStake(account)
+                logger.info(f"{bera.acc_name} - {round(bera.token_balance(coins.BGT.address), 6)} {coins.BGT.coin}")
+                break
+            except Exception as e:
+                logger.error(e)
+                time.sleep(5)
 
     coins = Coins()
     for account in accounts:
