@@ -46,7 +46,7 @@ class Faucet:
 
     def get_token(self):
         self.session.headers["Authorization"] = f"Bearer {self.captcha}"
-        resp = self.session.post(f"https://bartio-faucet.berachain-devnet.com/api/claim?address={self.address}", json={"address": self.address})
+        resp = self.session.post(f"https://bartiofaucet.berachain.com/api/claim?address={self.address}", json={"address": self.address})
 
         status_code = resp.status_code
         if status_code == 200:
