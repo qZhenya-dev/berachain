@@ -22,6 +22,9 @@ class Faucet:
                 }
         })
 
+        if resp.status_code != 200:
+            raise Exception(resp.text)
+        
         self.taskId = resp.json()["taskId"]
         logger.info(f"{self.acc_name} решаем капчу {self.taskId}..")
 
@@ -68,5 +71,5 @@ class Faucet:
                     break
 
             return self.get_token()
-        except:
-            logger.error(f"{self.acc_name} ошибка при получении токенов")
+        except Exception as err:
+            logger.error(f"{self.acc_name} ошибка при получении токенов {err}")
